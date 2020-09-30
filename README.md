@@ -32,4 +32,8 @@ https://codepen.io/sergo/pen/PoNLREK
 
 ```
 
+**2. помещаем канвас в нужное место**
 
+```html
+document.querySelector('body').appendChild(canvas);
+```
