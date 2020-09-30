@@ -4,7 +4,7 @@
 
 https://codepen.io/sergo/pen/PoNLREK
 
-(function(){
+
 
 
 
@@ -26,7 +26,7 @@ https://codepen.io/sergo/pen/PoNLREK
           lineLength          : 200, // длина соединения частиц(если частицы на расстоянии меньше чем 200 друг от друга, то связываются линией)
           particleLife        : 6 // время жизни частицы (сек)
         }
-  // помещаем наш канвас в нужное место
+  <!-- помещаем наш канвас в нужное место -->
   document.querySelector('.animate-bg').appendChild(canvas);  
   // функция для смены канвас вместе со сменой вьюпорта
   window.onresize = function(){ 
@@ -134,4 +134,4 @@ https://codepen.io/sergo/pen/PoNLREK
 
 ```
 
-}())
+
