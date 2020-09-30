@@ -6,9 +6,12 @@ https://codepen.io/sergo/pen/PoNLREK
 
 (function(){
 
-***Определяем переменные***
+
 
 ```html
+
+***Определяем переменные***
+
     /* полотно канвас */
     let canvas = document.createElement('canvas'), 
     ctx = canvas.getContext('2d'),
