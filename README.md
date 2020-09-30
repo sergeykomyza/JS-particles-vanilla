@@ -91,9 +91,9 @@ https://codepen.io/sergo/pen/PoNLREK
        if( length < properties.lineLength ){
          opacity = 1 - length/properties.lineLength; <!-- длину между частицами делим на указанную в properties.lineLength длину и вычитаем из еденицы. 
          т.к length не может превысить указанное расстояние в properties.lineLength,то самое большое число которое может получится - это 1
-         т.е чем больше расстояние между частицами тем меньше значение opacity */ 
-         ctx.lineWidth = '0.5'; // ширина линии
-         ctx.strokeStyle = 'rgba(255, 40, 40, '+ opacity +')'; // цвет и прозрачность линии
+         т.е чем больше расстояние между частицами тем меньше значение opacity --> 
+         ctx.lineWidth = '0.5'; <!-- ширина линии -->
+         ctx.strokeStyle = 'rgba(255, 40, 40, '+ opacity +')'; <!-- цвет и прозрачность линии -->
          ctx.beginPath(); <!-- начинаем путь -->
          ctx.moveTo(x1, y1); <!-- из точки 1 -->
          ctx.lineTo(x2, y2); <!-- в точку 2 -->
