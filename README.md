@@ -1,12 +1,14 @@
 Реализация плагина particles.js (фон из движущихся частиц) на чистом js
 
+Демо
+
 https://codepen.io/sergo/pen/PoNLREK
 
 (function(){
 
   /* выносим в переменные необходимые данные */
 
-  <!-- полотно канвас -->
+  >полотно канвас<br />
   let canvas = document.createElement('canvas'), 
   ctx = canvas.getContext('2d'),
       
