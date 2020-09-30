@@ -4,7 +4,7 @@ https://codepen.io/sergo/pen/PoNLREK
 
 (function(){
 
-  <!-- выносим в переменные необходимые данные -->
+  /* выносим в переменные необходимые данные */
 
   <!-- полотно канвас -->
   let canvas = document.createElement('canvas'), 
