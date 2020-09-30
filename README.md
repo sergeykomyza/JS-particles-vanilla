@@ -37,3 +37,44 @@ https://codepen.io/sergo/pen/PoNLREK
 ```html
 document.querySelector('body').appendChild(canvas);
 ```
+
+**3. определяем класс, отвечающий за настройки частиц (их положение, скорость, цвет и т.д)**
+
+```html
+  class Particle{
+    constructor(){
+      
+    }
+   
+  }
+```
+
+**4. constructor() - определяем положение частиц по горизонтали и вертикали**
+
+```html
+  class Particle{
+    constructor(){
+      this.x = Math.random()*w;
+      this.y = Math.random()*h;
+    }
+   
+  }
+```
+
+**5. reDraw() - метод, который будет отрисовывать частицу на канвас**
+
+```html
+  class Particle{
+    constructor(){
+      this.x = Math.random()*w;
+      this.y = Math.random()*h;
+    }
+   reDraw(){
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, properties.particleRadius, 0, Math.PI*2);
+      ctx.closePath();
+      ctx.fillStyle = properties.particleColor;
+      ctx.fill();
+    }
+  }
+```
