@@ -8,7 +8,7 @@ https://codepen.io/sergo/pen/PoNLREK
 
   /* выносим в переменные необходимые данные */
 
-  >полотно канвас<br />
+  <полотно канвас<br />
   let canvas = document.createElement('canvas'), 
   ctx = canvas.getContext('2d'),
       
