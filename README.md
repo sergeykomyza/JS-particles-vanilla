@@ -6,7 +6,7 @@ https://codepen.io/sergo/pen/PoNLREK
 
 
 
-
+***Код JS полностью***
 
 ```html
 
