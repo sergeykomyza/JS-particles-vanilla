@@ -118,11 +118,38 @@ function reDrawBackground(){
   init();
 ```
 
+**после этого на нашем полотне появятся рандомно расставленные 60 частиц**
 
+**дальше нам нужно заставить эти частицы двигаться**
 
+**10. заводим новое свойство в properties - particleMaxVelocity**
 
+```html
+properties = { 
+        bgColor             : 'rgba(0,0,0,1)', // цвет фона канваса
+        particleColor       : 'rgba(255, 40, 40, 1)', // цвет частиц
+        particleRadius      : 3, // радиус частицы
+        particleCount       : 60, // кол-во частиц
+        particleMaxVelocity : 0.5 // скорость частицы по X и Y
+      };
+```
+**11. в constructor заводим новые переменные - velocityX и velocityY, которые будут рандомно расчитывать скорость от -0.5 до +0.5. От этого будет зависеть направление движения частицы.**
 
-
-
-
+```html
+  class Particle{
+    constructor(){
+      this.x = Math.random()*w;
+      this.y = Math.random()*h;
+      >this.velocityX = Math.random()*(properties.particleMaxVelocity*2) - properties.particleMaxVelocity;
+      >this.velocityY = Math.random()*(properties.particleMaxVelocity*2) - properties.particleMaxVelocity;
+    }
+   reDraw(){
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, properties.particleRadius, 0, Math.PI*2);
+      ctx.closePath();
+      ctx.fillStyle = properties.particleColor;
+      ctx.fill();
+    }
+  }
+```
 
