@@ -78,3 +78,51 @@ document.querySelector('body').appendChild(canvas);
     }
   }
 ```
+**6. функция отвечающая за фон канваса**
+
+```html
+function reDrawBackground(){ 
+    ctx.fillStyle = properties.bgColor;
+    ctx.fillRect(0, 0, w, h);
+  }
+```
+**7. проходимся по всем частицам в массиве**
+
+```html
+  function reDrawParticles(){
+    for(let i in particles){
+      particles[i].reDraw(); и отрисовываем каждую частицу по параметрам, определенным в reDraw();
+    }
+  }
+```
+**8. функция обновления канвас**
+
+```html
+  function loop(){
+    reDrawBackground(); // обновляем фон канваса
+    reDrawParticles(); // обновляем отрисовку частиц
+    requestAnimationFrame(loop); // запускаем стандартную функцию анимации, обновляющую полотно (Обычно запросы происходят 60 раз в секунду - https://developer.mozilla.org/)
+  }
+```
+**9. инициализация всего кода**
+
+```html
+  function init(){ 
+    
+    for(let i = 0; i < properties.particleCount; i++){ // проходимся по всем частицам
+      particles.push(new Particle); // и добавляем каждую в массив через созданный класс Particle
+    }
+    loop();
+  }
+  
+  init();
+```
+
+
+
+
+
+
+
+
+
