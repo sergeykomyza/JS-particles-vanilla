@@ -91,7 +91,7 @@ function reDrawBackground(){
 ```html
   function reDrawParticles(){
     for(let i in particles){
-      particles[i].reDraw(); и отрисовываем каждую частицу по параметрам, определенным в reDraw();
+      particles[i].reDraw(); // отрисовываем каждую частицу по параметрам, определенным в reDraw();
     }
   }
 ```
@@ -140,8 +140,8 @@ properties = {
     constructor(){
       this.x = Math.random()*w;
       this.y = Math.random()*h;
-      >this.velocityX = Math.random()*(properties.particleMaxVelocity*2) - properties.particleMaxVelocity;
-      >this.velocityY = Math.random()*(properties.particleMaxVelocity*2) - properties.particleMaxVelocity;
+      this.velocityX = Math.random()*(properties.particleMaxVelocity*2) - properties.particleMaxVelocity;
+      this.velocityY = Math.random()*(properties.particleMaxVelocity*2) - properties.particleMaxVelocity;
     }
    reDraw(){
       ctx.beginPath();
@@ -152,4 +152,71 @@ properties = {
     }
   }
 ```
+**12. добавим новый метод position, который будет обновлять позицию частицы. В этом методе будем добавлять скорость к текущим координатам**
+
+```html
+  class Particle{
+    constructor(){
+      this.x = Math.random()*w;
+      this.y = Math.random()*h;
+      this.velocityX = Math.random()*(properties.particleMaxVelocity*2) - properties.particleMaxVelocity;
+      this.velocityY = Math.random()*(properties.particleMaxVelocity*2) - properties.particleMaxVelocity;
+    }
+    position(){ 
+      this.x += this.velocityX; 
+      this.y += this.velocityY;
+    }
+   reDraw(){
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, properties.particleRadius, 0, Math.PI*2);
+      ctx.closePath();
+      ctx.fillStyle = properties.particleColor;
+      ctx.fill();
+    }
+  }
+```
+**13. position так же будем вызывать в функции reDrawParticles()**
+
+```html
+  function reDrawParticles(){
+    for(let i in particles){
+      particles[i].reDraw(); // отрисовываем каждую частицу по параметрам, определенным в reDraw();
+      particles[i].position(); // обновляем позицию каждой частицы
+    }
+  }
+```
+
+**после этого наши частицы начнут двигаться по экрану**
+
+**14. только теперь частицы улетают за пределы экрана. чтобы предотвратить это, пропишем условие в методе position. в нем мы будем определять, что, если положение частицы превысит размер экрана, то ее скорость умножится на -1, в результате чего изменится ее направление**
+
+```html
+  class Particle{
+    constructor(){
+      this.x = Math.random()*w;
+      this.y = Math.random()*h;
+      this.velocityX = Math.random()*(properties.particleMaxVelocity*2) - properties.particleMaxVelocity;
+      this.velocityY = Math.random()*(properties.particleMaxVelocity*2) - properties.particleMaxVelocity;
+    }
+    position(){ 
+      ```this.x +  this.velocityX > w && this.velocityX > 0 || this.x + this.velocityX < 0 && this.velocityX < 0 ? this.velocityX *= -1 : this.velocityX;```
+      this.y +  this.velocityY > h && this.velocityY > 0 || this.y + this.velocityY < 0 && this.velocityY < 0 ? this.velocityY *= -1 : this.velocityY;
+      this.x += this.velocityX; 
+      this.y += this.velocityY;
+    }
+   reDraw(){
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, properties.particleRadius, 0, Math.PI*2);
+      ctx.closePath();
+      ctx.fillStyle = properties.particleColor;
+      ctx.fill();
+    }
+  }
+```
+
+
+
+
+
+
 
