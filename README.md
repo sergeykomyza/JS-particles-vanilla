@@ -7,7 +7,6 @@ https://codepen.io/sergo/pen/PoNLREK
 ***Код JS с комментариями***
 
 **1. определяем переменные**
-
 ```html
   // рисуем полотно канвас
   let canvas = document.createElement('canvas'), 
@@ -29,17 +28,14 @@ https://codepen.io/sergo/pen/PoNLREK
         particleRadius      : 3, // радиус частицы
         particleCount       : 60 // кол-во частиц
       };
-
 ```
 
 **2. помещаем канвас в нужное место**
-
 ```html
 document.querySelector('body').appendChild(canvas);
 ```
 
 **3. определяем класс, отвечающий за настройки частиц (их положение, скорость, цвет и т.д)**
-
 ```html
   class Particle{
     constructor(){
@@ -50,7 +46,6 @@ document.querySelector('body').appendChild(canvas);
 ```
 
 **4. constructor() - определяем положение частиц по горизонтали и вертикали**
-
 ```html
   class Particle{
     constructor(){
@@ -62,7 +57,6 @@ document.querySelector('body').appendChild(canvas);
 ```
 
 **5. reDraw() - метод, который будет отрисовывать частицу на канвас**
-
 ```html
   class Particle{
     constructor(){
@@ -78,16 +72,16 @@ document.querySelector('body').appendChild(canvas);
     }
   }
 ```
-**6. функция отвечающая за фон канваса**
 
+**6. функция отвечающая за фон канваса**
 ```html
 function reDrawBackground(){ 
     ctx.fillStyle = properties.bgColor;
     ctx.fillRect(0, 0, w, h);
   }
 ```
-**7. проходимся по всем частицам в массиве**
 
+**7. проходимся по всем частицам в массиве**
 ```html
   function reDrawParticles(){
     for(let i in particles){
@@ -95,8 +89,8 @@ function reDrawBackground(){
     }
   }
 ```
-**8. функция обновления канвас**
 
+**8. функция обновления канвас**
 ```html
   function loop(){
     reDrawBackground(); // обновляем фон канваса
@@ -104,8 +98,8 @@ function reDrawBackground(){
     requestAnimationFrame(loop); // запускаем стандартную функцию анимации, обновляющую полотно (Обычно запросы происходят 60 раз в секунду - https://developer.mozilla.org/)
   }
 ```
-**9. инициализация всего кода**
 
+**9. инициализация всего кода**
 ```html
   function init(){ 
     
@@ -123,7 +117,6 @@ function reDrawBackground(){
 **дальше нам нужно заставить эти частицы двигаться**
 
 **10. заводим новое свойство в properties - particleMaxVelocity**
-
 ```html
 properties = { 
         bgColor             : 'rgba(0,0,0,1)', // цвет фона канваса
@@ -134,7 +127,6 @@ properties = {
       };
 ```
 **11. в constructor заводим новые переменные - velocityX и velocityY, которые будут рандомно расчитывать скорость от -0.5 до +0.5. От этого будет зависеть направление движения частицы.**
-
 ```html
   class Particle{
     constructor(){
@@ -152,8 +144,8 @@ properties = {
     }
   }
 ```
-**12. добавим новый метод position, который будет обновлять позицию частицы. В этом методе будем добавлять скорость к текущим координатам**
 
+**12. добавим новый метод position, который будет обновлять позицию частицы. В этом методе будем добавлять скорость к текущим координатам**
 ```html
   class Particle{
     constructor(){
@@ -176,7 +168,6 @@ properties = {
   }
 ```
 **13. position так же будем вызывать в функции reDrawParticles()**
-
 ```html
   function reDrawParticles(){
     for(let i in particles){
@@ -189,8 +180,6 @@ properties = {
 **после этого наши частицы начнут двигаться по экрану**
 
 **14. только теперь частицы улетают за пределы экрана. чтобы предотвратить это, пропишем условие в методе position. в нем мы будем определять, что, если положение частицы превысит размер экрана, то ее скорость умножится на -1, в результате чего изменится ее направление**
-
-
 ```html
   class Particle{
     constructor(){
@@ -215,10 +204,40 @@ properties = {
   }
 ```
 
+**теперь частицы не будут улетать за пределы экрана**
 
+**15. Добавляем соединительные линии между частицами. Создаем функцию drawLines в которой создаем 6 переменных**
+```html
+function drawLines(){
+    let x1, y1, x2, y2, length, opacity;
+}
+```
+**16. В этой функции мы будем проверять расстояние от одной частицы до другой. Используя циклы, мы будем брать каждую частицу по отдельности и вычислять расстояние от нее до других частиц**
+```html
+function drawLines(){
+    let x1, y1, x2, y2, length, opacity;
+    for( let i in particles ){
+         for( let j in particles ){
 
+         }
+    }
+}
+```
 
-
+**17. Далее в переменные, объявленные вначале функции, записываем координаты наших частиц по X и Y**
+```html
+function drawLines(){
+    let x1, y1, x2, y2, length, opacity;
+    for( let i in particles ){
+         for( let j in particles ){
+            x1 = particles[i].x; // координата одной частицы по горизонтали
+            y1 = particles[i].y; // координата одной частицы по вертикали
+            x2 = particles[j].x; // координата второй частицы по горизонтали
+            y2 = particles[j].y; // координата второй частицы по вертикали
+         }
+    }
+}
+```
 
 
 
